@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Add New Student</h2>
+<form method="POST" action="{{ url_for('add_student') }}">
+    <label>Full Name:</label>
+    <input type="text" name="name" required placeholder="e.g. John Doe">
+
+    <label>Roll Number:</label>
+    <input type="text" name="roll_number" required placeholder="e.g. 26CS101">
+
+    <label>Email Address:</label>
+    <input type="email" name="email" required placeholder="e.g. john@example.com">
+
+    <label>Department:</label>
+    <select name="department" required>
+        <option value="">Select Department</option>
+        <option value="Computer Science">Computer Science</option>
+        <option value="Information Technology">Information Technology</option>
+        <option value="ECE">ECE</option>
+        <option value="EEE">EEE</option>
+        <option value="Mechanical">Mechanical</option>
+    </select>
+
+    <button type="submit" class="btn btn-primary">Save Student</button>
+    <a href="{{ url_for('index') }}" class="btn btn-warning">Cancel</a>
+</form>
+{% endblock %}

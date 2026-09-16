@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Edit Student Details</h2>
+<form method="POST" action="{{ url_for('edit_student', id=student.id) }}">
+    <label>Full Name:</label>
+    <input type="text" name="name" value="{{ student.name }}" required>
+
+    <label>Roll Number:</label>
+    <input type="text" name="roll_number" value="{{ student.roll_number }}" required>
+
+    <label>Email Address:</label>
+    <input type="email" name="email" value="{{ student.email }}" required>
+
+    <label>Department:</label>
+    <select name="department" required>
+        <option value="Computer Science" {% if student.department == 'Computer Science' %}selected{% endif %}>Computer Science</option>
+        <option value="Information Technology" {% if student.department == 'Information Technology' %}selected{% endif %}>Information Technology</option>
+        <option value="ECE" {% if student.department == 'ECE' %}selected{% endif %}>ECE</option>
+        <option value="EEE" {% if student.department == 'EEE' %}selected{% endif %}>EEE</option>
+        <option value="Mechanical" {% if student.department == 'Mechanical' %}selected{% endif %}>Mechanical</option>
+    </select>
+
+    <button type="submit" class="btn btn-primary">Update Student</button>
+    <a href="{{ url_for('index') }}" class="btn btn-warning">Cancel</a>
+</form>
+{% endblock %}
